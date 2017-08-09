@@ -39,8 +39,8 @@ Donate here: http://is.gd/donate2ToxicAppl3Inc
 
 # Screenshots
 Well here are some screenshots if you care! :P
-![Screenshot](https://github.com/iKilledAppl3/Meteora/blob/master/screenshot.jpg?raw=true)
-![Screenshot å2](https://github.com/iKilledAppl3/Meteora/blob/master/screenshot2.jpg?raw=true)
+(https://github.com/iKilledAppl3/Meteora/blob/master/Screenshot.jpg?raw=true)
+(https://github.com/iKilledAppl3/Meteora/blob/master/Screenshot2.jpg?raw=true)
 
 # Video
 Watch it here: https://twitter.com/iKilledAppl3/status/892202494566203393
