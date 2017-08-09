@@ -7,6 +7,10 @@ This tweak isn't compatible with most iOS 10 lockscreen tweaks due to them modif
 I wish the community would understand this stuff isn't easy for developers to do!
 The code is a bit messy! It works! most of the way!
 
+# How to build?
+- Simple! Use theos and libcephei! that's it!
+- Need help contact me on Twitter @iKilledAppl3
+
 # Things to Do!
 - Touch ID (Sticktron has worked with me on this and has come to find out that Apple no longer accepts mesa (biometric) unlocking requests with the "old" lockscreeen) (maybe someone can make a work around? IDK though).
 - iOS 9 styled Notifications (or notifications in general working) on the Lockscreen.
