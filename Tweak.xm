@@ -169,7 +169,7 @@ SBUILegibilityLabel *timeLabel; //Time label on the lockscreen!
 %end
 
 //Try to get Touch ID working
-//I found out from Stricktron that Apple disables mesa authentication on the lockscreen	
+//I found out from Sticktron that Apple disables mesa authentication on the lockscreen	
 %hook SBLockScreenManager
 -(void)setBiometricAutoUnlockingDisabled:(BOOL)arg1 forReason:(id)arg2 {
 	%orig;
