@@ -1,0 +1,9 @@
+Package: com.ikilledappl3.durango
+Name: Meteora
+Depends: mobilesubstrate, ws.hbang.common
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Slide to unlock is back!  R.I.P. Chester :/
+Maintainer: iKilledAppl3 <ipodnewbee234@icloud.com>
+Author: iKilledAppl3 <ipodnewbee234@icloud.com>
+Section: Tweaks
