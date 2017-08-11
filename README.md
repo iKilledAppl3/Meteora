@@ -20,7 +20,7 @@ The code is a bit messy! It works! most of the way!
 # Why doesn't certain things work?
 - Simple the methods I use are from iOS 9 and although Apple has them in iOS 10 they're subclassed or rather the SBDashBoardViewController (and other SBDashBoard components) are the ones calling the shots here. 
 - IOS 10's lockscreen mechanism is a bit weird it uses the dashboard as the main lockscreen view but still uses some old iOS 9 lockscreen components by subclassing them
-- You can basically get the old lockscreen back by disabling the dashboard but by doing so MESA (Touch ID) authentication fails and gets revoked on the "old" lockscreen (thanks to Stricktron for figuring this out)
+- You can basically get the old lockscreen back by disabling the dashboard but by doing so MESA (Touch ID) authentication fails and gets revoked on the "old" lockscreen (thanks to Sticktron for figuring this out)
 
 # Please! Please! Please! give credit to me if you make anything cool out of this mess!
 I spent three weeks or more on this and I'm cutting losses! I wanted to make money off of this because I've been struggling to find a job lately (sorry for the sap story).
