@@ -1,26 +1,22 @@
-// Created by iKilledAppl3! 
-//this header file is the heart and soul of the tweak next to the xm file.
-//This contains all the interfaces needed for the tweak and what we need to modify it with.
-
 #import <UIKit/UIKit.h>
-//Cephei header make sure you have this in your include folder! 
-#import <Cephei/HBPreferences.h>
 #import <objc/runtime.h>
 #import <MediaRemote/MediaRemote.h>
 #import <AudioToolbox/AudioServices.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVAudioPlayer.h>
+//#import <SpringBoard/SBLockScreenNotificationListView.h>
+//#import <SpringBoard/SBLockScreenNotificationListController.h>
 
 NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support/Durango/"] pathForResource:@"unlock" ofType:@"caf"];
 
 
 @interface SBDashBoardUnlockBehavior : NSObject {
-	
+
 }
 @end
 
 @interface SBLockScreenViewControllerBase : NSObject {
-	
+
 }
 +(id)sharedInstance;
 -(void)setAuthenticated:(BOOL)arg1;
@@ -35,7 +31,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface SBUIBiometricResource : NSObject <BiometricKitDelegate>{
-	
+
 }
 +(id)sharedInstance;
 -(BOOL)hasEnrolledFingers;
@@ -46,7 +42,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 
 
 @interface SBDashBoardMesaUnlockBehavior : NSObject  {
-	
+
 }
 +(id)sharedInstance;
 -(void)mesaUnlockTriggerFired:(id)arg1;
@@ -56,7 +52,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 
 
 @interface SBFUserAuthenticationController : NSObject {
-	
+
 }
 +(id)sharedInstance;
 -(void)_handleSuccessfulAuthentication:(id)arg1 responder:(id)arg2;
@@ -116,7 +112,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface SBUILegibilityLabel : UIView {
-	
+
 }
 @end
 
@@ -141,7 +137,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface SBNotificationCenterController: NSObject {
-	
+
 }
 +(id)sharedInstance;
 -(void)presentAnimated:(BOOL)arg1;
@@ -167,7 +163,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface SBLockScreenView : UIView {
-	
+
 }
 +(id)sharedInstance;
 -(void)getScrollview;
@@ -179,7 +175,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface SBLockScreenPluginManager : NSObject {
-	
+
 }
 +(id)sharedInstance;
 -(void)_handleUIRelock;
@@ -189,7 +185,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface SBLockScreenSettings : NSObject {
-	
+
 }
 +(id)sharedInstance;
 -(BOOL)showNowPlaying;
@@ -206,7 +202,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
  
 @interface SBUIChevronView : UIView {
-	
+
 }
 @end
 
@@ -216,12 +212,12 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface SBSaturatedIconView : UIImageView {
-	
+
 }
 @end
 
 @interface SBUIBannerItem : NSObject {
-	
+
 }
 @end
 
@@ -239,7 +235,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface SBFLockScreenDateView : UIView {
-	
+
 }
 @end
 
@@ -254,23 +250,27 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 @end
 
 @interface MPUNowPlayingController : NSObject {
-	
+
 }
 +(id)sharedInstance;
 -(UIImage *)currentNowPlayingArtwork;
 @end
 
-/*@interface SBLockScreenNotificationListView : UIView
+@interface SBLockScreenNotificationListController : UIViewController
 @end
- 
 
-@interface iKilledAppl3NotifView : SBLockScreenNotificationListView <UITableViewDataSource, UITableViewDelegate> {
-	
-}
-@end*/
-
-
-@interface SkittyBlockLSMediaView : UIView {
+@interface MTOMediaView : UIView {
   MPULockScreenMediaControlsViewController *_mediaController;
 }
+@end
+
+@interface MTONotificationsView : UIView {
+  SBLockScreenNotificationListController *_notificationController;
+}
+@end
+
+@interface HBPreferences
++ (id)alloc;
+- (id)initWithIdentifier:(id)arg1;
+- (void)registerBool:(BOOL *)arg1 default:(BOOL)arg2 forKey:(id)arg3;
 @end

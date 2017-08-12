@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Durango</string>
+	<string>Meteora</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ikilledappl3.durango</string>
+	<string>com.ikilledappl3.meteora</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -23,6 +23,6 @@
 	<key>MinimumOSVersion</key>
 	<string>3.0</string>
 	<key>NSPrincipalClass</key>
-	<string>DurangoListController</string>
+	<string>MeteoraListController</string>
 </dict>
 </plist>
