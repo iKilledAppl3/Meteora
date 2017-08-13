@@ -23,12 +23,56 @@ UIView *mediaControls;
 UIView *artworkView;
 UIBlurEffect *mediaEffect;
 UIVisualEffectView *mediaVisualEffect;
+UIView *blurView;
 UIImageView* _artworkImageView;
+UIView *notifsView;
 CGRect artworkFrame;
 SBMediaController *mediaController = [%c(SBMediaController) sharedInstance];
 SBUILegibilityLabel *timeLabel;
 
 
+%hook SBLockScreenNotificationListView
+- (void)updateForAdditionOfItemAtIndex:(unsigned long long)arg1 allowHighlightOnInsert:(BOOL)arg2 {
+  %orig;
+
+  // Check if exists
+  for(UIView *view in self.superview.superview.superview.superview.subviews) {
+    if(view.tag == 167) {
+      return;
+    }
+  }
+
+  // Create blur view
+  blurView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  blurView.backgroundColor = [UIColor clearColor];
+  blurView.alpha = 0;
+  blurView.tag = 167;
+
+  UIVisualEffectView *blurEffect = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+  blurEffect.frame = blurView.bounds;
+  [blurView addSubview:blurEffect];
+
+  [self.superview.superview.superview.superview addSubview:blurView];
+  [self.superview.superview.superview.superview sendSubviewToBack:blurView];
+
+  [UIView animateWithDuration:0.4 animations:^(void) {
+    blurView.alpha = 1;
+  } completion:nil];
+}
+%end
+
+%hook SBControlCenterController
+-(void)setUILocked:(BOOL)arg1 {
+	if(kEnabled && [[%c(SBLockScreenManager) sharedInstance] isUILocked]) {
+	     %orig(YES);
+	}
+	
+	else {
+	   %orig(arg1);	
+	}
+}
+%end
+	
 // VOLUME CONTROL
 %hook VolumeControl
 -(void)increaseVolume {
@@ -179,16 +223,24 @@ SBUILegibilityLabel *timeLabel;
       [self addGestureRecognizer:lockTapGesture];
     }
     
+	//Remove the duplicate notification view from the lockscreen.
+    UIView * _notificationView = [self valueForKey:@"_notificationView"];
+   [_notificationView removeFromSuperview];
+	
     // Notifications View
-    for(UIView *notifView in self.subviews) {
+    UIView *_foregroundLockView = MSHookIvar<UIView*>(self, "_foregroundLockView");
+    for(UIView *notifView in _foregroundLockView.subviews) {
       if([notifView class] == NSClassFromString(@"MTONotificationsView")) {
 	return;
       }
     }
-    UIView *notifsView = [[%c(MTONotificationsView) alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,  400)];
-    [self addSubview:notifsView];
-    [self sendSubviewToBack:notifsView];
+	notifsView = [[%c(MTONotificationsView) alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    [_foregroundLockView addSubview:notifsView];
+	if (mediaController.isPlaying) {
+	 [mediaControls removeFromSuperview];
+}
   }
+  
 }
 
 // 2 FINGER TAP GESTURE
@@ -258,7 +310,7 @@ SBUILegibilityLabel *timeLabel;
     }
   }
 }
-  
+
 // LAYOUT MEDIA CONTROLS
 -(void)setMediaControlsView:(id)arg1 {
   if (kEnabled && mediaController.isPlaying) {
@@ -278,6 +330,40 @@ SBUILegibilityLabel *timeLabel;
 }
 %end
 
+// touch id fix (maybe or just a fluke, may have side effects) from DGh0st
+%hook SBFUserAuthenticationController
+-(void)_revokeAuthenticationImmediately:(BOOL)arg1 forPublicReason:(id)arg2 {
+  if (kEnabled && arg1 && ([arg2 isEqualToString:@"BioUnlock in Old LockScreen"] || [arg2 isEqualToString:@"StartupTransitionToLockOut"])) {
+    
+  } else {
+    %orig(arg1, arg2);
+  }
+}
+
+-(void)revokeAuthenticationImmediatelyForPublicReason:(id)arg1 {
+  if (kEnabled && ([arg1 isEqualToString:@"BioUnlock in Old LockScreen"] || [arg1 isEqualToString:@"StartupTransitionToLockOut"])) {
+
+  } else {
+    %orig(arg1);
+  }
+}
+
+-(void)revokeAuthenticationImmediatelyIfNecessaryForPublicReason:(id)arg1 {
+  if (kEnabled && ([arg1 isEqualToString:@"BioUnlock in Old LockScreen"] || [arg1 isEqualToString:@"StartupTransitionToLockOut"])) {
+
+  } else {
+    %orig(arg1);
+  }
+}
+
+-(void)revokeAuthenticationIfNecessaryForPublicReason:(id)arg1 {
+  if (kEnabled && ([arg1 isEqualToString:@"BioUnlock in Old LockScreen"] || [arg1 isEqualToString:@"StartupTransitionToLockOut"])) {
+
+  } else {
+    %orig(arg1);
+  }
+}
+%end
 
 // SHOW TIME AND DATE
 %hook SBFLockScreenDateView
