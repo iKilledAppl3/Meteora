@@ -9,7 +9,7 @@ Meteora_FRAMEWORKS = UIKit CoreGraphics AudioToolbox AVFoundation
 Meteora_PRIVATE_FRAMEWORKS = MediaRemote
 Meteora_EXTRA_FRAMEWORKS += Cephei
 Meteora += -Wl,-segalign,4000
-Meteora_CFLAGS = -Wno-deprecated -Wno-deprecated-declarations -Wno-error
+Meteora_CFLAGS = -Wno-deprecated -Wno-deprecated-declarations
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
