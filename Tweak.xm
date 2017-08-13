@@ -409,9 +409,10 @@ SBUILegibilityLabel *timeLabel;
   %orig;
   
   if (kEnabled && [[%c(SBLockScreenManager) sharedInstance] isUILocked] && arg1 == kTouchIDSuccess) {
-    SystemSoundID soundID;
-    AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:unlockSound],&soundID);
-    AudioServicesPlaySystemSound(soundID);
+    //SystemSoundID soundID;
+    //AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:unlockSound],&soundID);
+    //AudioServicesPlaySystemSound(soundID);
+     %orig;
   } else {
     %orig;
   }
@@ -420,12 +421,12 @@ SBUILegibilityLabel *timeLabel;
     
 %hook SBLockScreenViewController 
 -(void)handleBiometricEvent:(unsigned long long)arg1 {
-  %orig;
   
   if (kEnabled && [[%c(SBLockScreenManager) sharedInstance] isUILocked] && arg1 == kTouchIDSuccess) {
-    SystemSoundID soundID;
-    AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:unlockSound],&soundID);
-    AudioServicesPlaySystemSound(soundID);
+    //SystemSoundID soundID;
+    //AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:unlockSound],&soundID);
+    //AudioServicesPlaySystemSound(soundID);
+     %orig;
   } else {
     %orig;
   }
