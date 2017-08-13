@@ -4,7 +4,6 @@ Currently it is a work in progress. Once this project is completed it will be re
 This tweak was mainly created by Me (iKilledAppl3) but I open sourced it hoping someone would help fix the bugs. Skitty decided to help so I could release it. Most things done in this tweak was written by me.    
 
 # Things to Do!
-- Touch ID: Touch ID currently doesn't work at all. This is the biggest setback currently but we are working on a fix.
 - Notifications: The Notifications are only half completed and still need to be finished.
 - Fix more bugs: Yeah, there's lots more bugs we know.
 - Prevent the Lockscreen from relocking itself when you tap on a notification in the NC, tap to open the Music application on the Lockscreen (from the Control Center).
