@@ -4,11 +4,11 @@
 #import <AudioToolbox/AudioServices.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVAudioPlayer.h>
-//#import <SpringBoard/SBLockScreenNotificationListView.h>
-//#import <SpringBoard/SBLockScreenNotificationListController.h>
 
-NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support/Durango/"] pathForResource:@"unlock" ofType:@"caf"];
+NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support/Meteora/"] pathForResource:@"unlock" ofType:@"caf"];
 
+@interface SBLockScreenNotificationScrollView : UIScrollView 
+@end
 
 @interface SBDashBoardUnlockBehavior : NSObject {
 
@@ -232,6 +232,7 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 -(BOOL)isPlaying;
 -(BOOL)isPaused;
 -(BOOL)hasTrack;
+-(BOOL)pause;
 @end
 
 @interface SBFLockScreenDateView : UIView {
@@ -254,6 +255,9 @@ NSString *unlockSound = [[NSBundle bundleWithPath:@"/Library/Application Support
 }
 +(id)sharedInstance;
 -(UIImage *)currentNowPlayingArtwork;
+@end
+
+@interface SBLockScreenNotificationListView : UIView
 @end
 
 @interface SBLockScreenNotificationListController : UIViewController
