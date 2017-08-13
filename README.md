@@ -21,9 +21,8 @@ We request that you give credit to the original project, although not legally re
 Any redistributions of this work are required to be free, you can not sell any part of this source code without consent.    
 
 # Donate!
-This is a huge project that we took on because peeple requested it.  
+This is a huge project that we took on because people requested it.  
 If you would like to help us create more tweaks please donate any amount you would like.    
-If you just feel like donating to one person donate to iKilledAppl3, he deserves it more.    
 iKilledAppl3: http://is.gd/donate2ToxicAppl3Inc    
 Skittyblock: http://paypal.me/Skittyblock
 
